@@ -1,5 +1,5 @@
 export default {
-  name: '',
+  name: 'LZT',
   // 64×64 PNG, 4px arms, ≤ 18000 bytes. docs/avatar.md
   skin: '',
   languages: ['zh', 'en'],

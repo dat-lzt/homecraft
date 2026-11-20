@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "name": "My Home",
+  "name": "LZT",
   "url": "",
   "logo": "assets/favicon.png",
-  "intro": "",
+  "intro": "LZT 的个人主页，记录我的项目、兴趣与日常。",
   "lang": ["zh", "en"],
   "homecraft": true
 }

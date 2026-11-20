@@ -22,8 +22,28 @@ After importing the repository, configure:
 
 ## Your Own Server
 
+### Docker deployment
+
+For the Docker-based deployment used by this project, start Docker Desktop and make sure SSH access to the server works (the default host alias is `lzt-v2`). Then run this from the repository root:
+
 ```sh
-DEPLOY_TARGET=user@your-server:/var/www/site/ tools/build.sh --deploy
+bash tools/deploy-server.sh
+```
+
+The script builds the site into a Linux AMD64 Nginx image, transfers the image and Compose file over SSH, and starts the service in `/opt/homecraft` on port `3001`. Set `DEPLOY_HOST` to use a different SSH host alias:
+
+```sh
+DEPLOY_HOST=user@example.com bash tools/deploy-server.sh
+```
+
+Allow inbound TCP traffic on port `3001` in the server firewall or cloud security group before opening `http://your-server:3001/`. HTTPS requires a domain and TLS configuration.
+
+### Direct file deployment
+
+For a server with a configured static web root and `rsync` installed, the existing build script can also synchronize files directly:
+
+```sh
+DEPLOY_TARGET=user@your-server:/var/www/site/ bash tools/build.sh --deploy
 ```
 
 The deploy command syncs the target directory to match the contents of `dist/`, including deleting extraneous files in the target directory. `DEPLOY_TARGET` should point to a directory dedicated to this site.
