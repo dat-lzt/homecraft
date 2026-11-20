@@ -1,0 +1,6 @@
+services:
+  homecraft:
+    image: homecraft:${DEPLOY_TAG:?set DEPLOY_TAG}
+    restart: unless-stopped
+    ports:
+      - "3001:80"
